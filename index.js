@@ -22,7 +22,7 @@ $(document).ready(() => {
 document.addEventListener("resize", () => {
   resize();
 });
-
+var startTime = true;
 var count = 0;
 
 const flip = (index) => {
@@ -81,7 +81,7 @@ const flip = (index) => {
             }
             setTimeout(() => {
               if (count >= config.numberOfFiles * 2) {
-                stopTimer();
+                startTime = false;
               }
             }, 1000);
           }
@@ -113,6 +113,7 @@ const flip = (index) => {
 
 const start = () => {
   setInterval(startTimer, 10);
+
   document.body.style.justifyContent = "space-between";
   $("#timer").show();
   $("#start").addClass("d-none");
@@ -164,29 +165,31 @@ const Seconds = document.querySelector(".seconds");
 const Tens = document.querySelector(".tens");
 
 function startTimer() {
-  tens++;
-  if (tens <= 9) {
-    Tens.innerHTML = "0" + tens;
-  }
-  if (tens > 9) {
-    Tens.innerHTML = tens;
-  }
-  if (tens > 99) {
-    seconds++;
-    Seconds.innerHTML = "0" + seconds;
-    tens = 0;
-    Tens.innerHTML = "0" + 0;
-  }
-  if (seconds > 9) {
-    Seconds.innerHTML = seconds;
-  }
-  if (seconds > 59) {
-    minutes++;
-    Minutes.innerHTML = "0" + minutes;
-    seconds = 0;
-    Seconds.innerHTML = "0" + 0;
-  }
-  if (minutes > 9) {
-    Minutes.innerHTML = minutes;
+  if (startTime) {
+    tens++;
+    if (tens <= 9) {
+      Tens.innerHTML = "0" + tens;
+    }
+    if (tens > 9) {
+      Tens.innerHTML = tens;
+    }
+    if (tens > 99) {
+      seconds++;
+      Seconds.innerHTML = "0" + seconds;
+      tens = 0;
+      Tens.innerHTML = "0" + 0;
+    }
+    if (seconds > 9) {
+      Seconds.innerHTML = seconds;
+    }
+    if (seconds > 59) {
+      minutes++;
+      Minutes.innerHTML = "0" + minutes;
+      seconds = 0;
+      Seconds.innerHTML = "0" + 0;
+    }
+    if (minutes > 9) {
+      Minutes.innerHTML = minutes;
+    }
   }
 }
