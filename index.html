@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOCC Flip The Card</title>
     <link rel="shortcut icon" href="./src/logo.png" />
-    <link href="http://fonts.cdnfonts.com/css/lobster-2" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -20,31 +19,22 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="background">
-      <div class="w-100 h-100">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div
-          class="d-flex justify-content-center align-items-center w-100 h-100 flex-column"
-        >
-          <h1>SOC Treasure Hunt</h1>
-          <img src="./src/logo.png" id="logo" />
-          <div id="start">
-            <button class="bubbly-button" onclick="start(event)">Start</button>
-          </div>
-        </div>
-      </div>
-      <map class="hide">
-        <area
-          class="area"
-          target=""
-          alt="Moon"
-          title="Moon"
-          coords=""
-          shape="rect"
-        />
-      </map>
+    <h2 id="timer" class="text-center m-3">
+      <span class="mins">00</span>:<span class="seconds">00</span>:<span class="tens">00</span>
+    </h2>
+    <div
+      id="start"
+      class="d-flex flex-column justify-content-center align-items-center"
+      style="gap: 10px"
+    >
+      <h1 class="animate__flip animate__animated">Flip The Card</h1>
+      <button onclick="start()" id="start" class="bubbly-button">
+        Start Game
+      </button>
+    </div>
+
+    <div class="container flex-column" id="game">
+      <div id="grid"></div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
