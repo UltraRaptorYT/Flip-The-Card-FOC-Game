@@ -49,6 +49,11 @@ body {
   #grid {
     width: 50%;
   }
+  .tile__face--front h2 {
+    color: #fff;
+    font-size: clamp(1rem, 2vw, 2rem) !important;
+    margin: 0;
+  }
 }
 
 .bubbly-button {
@@ -200,7 +205,7 @@ body {
 
 .tile__face--front h2 {
   color: #fff;
-  font-size: clamp(1rem, 2.25vw, 2rem);
+  font-size: clamp(1rem, 2.5vw,3rem);
   margin: 0;
 }
 
