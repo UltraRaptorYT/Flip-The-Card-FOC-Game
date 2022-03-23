@@ -113,7 +113,6 @@ const flip = (index) => {
 
 const start = () => {
   setInterval(startTimer, 10);
-
   document.body.style.justifyContent = "space-between";
   $("#timer").show();
   $("#start").addClass("d-none");
@@ -158,7 +157,7 @@ function shuffleArray(array) {
   return array;
 }
 let minutes = 00;
-let seconds = 58;
+let seconds = 00;
 let tens = 00;
 const Minutes = document.querySelector(".mins");
 const Seconds = document.querySelector(".seconds");
