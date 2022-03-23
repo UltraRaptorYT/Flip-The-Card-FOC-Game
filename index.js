@@ -140,7 +140,7 @@ const start = () => {
     <div class="tile">
       <div class="tile__inner"  id="card${i}" onClick="flip(${i})">
         <div class="tile__face tile__face--front">
-          <h2>${i + 1}</h2>
+          <h2>?</h2>
         </div>
         <div class="tile__face tile__face--back">
           <img src="./src/cards/${array[i]}.png" />
