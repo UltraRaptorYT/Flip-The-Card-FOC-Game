@@ -24,6 +24,7 @@ document.addEventListener("resize", () => {
 });
 var startTime = true;
 var count = 0;
+var tries = 0;
 
 const flip = (index) => {
   if (sessionStorage.getItem("flip") === "false") {
@@ -42,6 +43,7 @@ const flip = (index) => {
         if (sessionStorage.getItem("card") !== "1") {
           sessionStorage.clear();
           sessionStorage.setItem("flip", true);
+          tries++
           var cardArr = [];
           var indexArr = [];
           for (
@@ -82,6 +84,7 @@ const flip = (index) => {
             setTimeout(() => {
               if (count >= config.numberOfFiles * 2) {
                 startTime = false;
+                alert(`You complete game in ${tries} tries and ${document.getElementById("timer").innerText}`)
               }
             }, 1000);
           }
