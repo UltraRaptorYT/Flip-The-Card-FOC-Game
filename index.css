@@ -35,13 +35,19 @@ body {
   grid-template-rows: auto;
   justify-items: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   margin: 0px auto;
 }
 
 @media only screen and (max-width: 768px) {
   #grid {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  #grid {
+    width: 50%;
   }
 }
 
