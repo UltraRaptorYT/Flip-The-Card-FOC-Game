@@ -43,7 +43,7 @@ const flip = (index) => {
         if (sessionStorage.getItem("card") !== "1") {
           sessionStorage.clear();
           sessionStorage.setItem("flip", true);
-          tries++
+          tries++;
           var cardArr = [];
           var indexArr = [];
           for (
@@ -84,7 +84,11 @@ const flip = (index) => {
             setTimeout(() => {
               if (count >= config.numberOfFiles * 2) {
                 startTime = false;
-                alert(`You complete game in ${tries} tries and ${document.getElementById("timer").innerText}`)
+                alert(
+                  `You complete game in ${tries} tries and ${
+                    document.getElementById("timer").innerText
+                  }`
+                );
               }
             }, 1000);
           }
@@ -116,7 +120,6 @@ const flip = (index) => {
 
 const start = () => {
   setInterval(startTimer, 10);
-  document.body.style.justifyContent = "space-between";
   $("#timer").show();
   $("#start").addClass("d-none");
   $("#start").removeClass("d-flex");
@@ -140,7 +143,11 @@ const start = () => {
     <div class="tile">
       <div class="tile__inner"  id="card${i}" onClick="flip(${i})">
         <div class="tile__face tile__face--front">
-          <h2>?</h2>
+          <h2>R${
+            Math.floor(i / ((config.numberOfFiles * 2) / config.gridSize)) + 1
+          }C${
+      1 + Math.floor(i % ((config.numberOfFiles * 2) / config.gridSize))
+    }</h2>
         </div>
         <div class="tile__face tile__face--back">
           <img src="./src/cards/${array[i]}.png" />
