@@ -16,6 +16,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   color: var(--text-color);
+  font-family: "Fredoka One", sans-serif;
 }
 
 :root {
@@ -23,11 +24,8 @@ body {
   --secondary: #fe4880;
   --dark: #947a7a;
   --light: #f3f3f3;
-  --background: linear-gradient(
-    rgba(243, 129, 129, 0.9),
-    rgba(252, 227, 138, 0.9)
-  );
-  --text-color: black;
+  --background: #ff739d;
+  --text-color: #202020;
 }
 
 #grid {
@@ -184,6 +182,7 @@ body {
   width: 100%;
   aspect-ratio: 1;
   perspective: 1000px;
+  padding: 5px;
 }
 
 .tile__inner {
@@ -201,6 +200,8 @@ body {
 }
 
 .tile__face {
+  border-radius: 10px;
+  padding: 5px;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -211,11 +212,12 @@ body {
 }
 
 .tile__face--front {
-  background-image: linear-gradient(
+  background: #3b86ff;
+  /* background-image: linear-gradient(
     to bottom right,
     var(--primary),
     var(--secondary)
-  );
+  ); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,6 +228,12 @@ body {
   font-size: clamp(1rem, 2.5vw, 3rem);
   margin: 0;
 }
+.tile__face--front img {
+  width: 92.5%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
+
 .Number,
 #label > p {
   font-size: clamp(1rem, 1.25vw, 2rem) !important;
