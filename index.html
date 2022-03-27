@@ -23,12 +23,27 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h2 id="timer" class="text-center m-5">
-      <span class="mins">00</span>:<span class="seconds">00</span>:<span
-        class="tens"
-        >00</span
-      >
-    </h2>
+    <div
+      class="w-100 justify-content-center align-items-center d-flex flex-column"
+    >
+      <h2 id="timer" class="text-center m-5">
+        <span class="mins">00</span>:<span class="seconds">00</span>:<span
+          class="tens"
+          >00</span
+        >
+      </h2>
+      <div class="container position-relative" id="col">
+        <div class="position-absolute text-center  align-items-center h-100" id="label">
+          <p class="m-0">Col\Row</p>
+          <!-- <p class="m-0">Col</p> -->
+        </div>
+        <div
+          class="text-center mx-auto justify-content-center align-items-center"
+          style="display: grid"
+          id="colNum"
+        ></div>
+      </div>
+    </div>
     <div
       id="start"
       class="d-flex flex-column justify-content-center align-items-center"
@@ -48,7 +63,18 @@
       </button>
     </div>
 
-    <div class="container flex-column mb-5" id="game">
+    <div class="container flex-column mb-5 position-relative" id="game">
+      <div
+        class="position-absolute"
+        style="
+          z-index: 100;
+          height: 100%;
+          align-items: center;
+          display: grid;
+          grid-template-columns: 1fr;
+        "
+        id="rowNum"
+      ></div>
       <div id="grid"></div>
     </div>
     <script

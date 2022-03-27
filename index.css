@@ -40,19 +40,37 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  #grid {
+  #grid,
+  #colNum {
     width: 100%;
   }
 }
+#label {
+  left: -12%;
+}
+#rowNum {
+  left: -3%;
+}
 
 @media only screen and (max-width: 1920px) {
-  #grid {
+  #grid,
+  #colNum {
     width: 50%;
   }
   .tile__face--front h2 {
     color: #fff;
     font-size: clamp(1rem, 2vw, 2rem) !important;
     margin: 0;
+  }
+  .Number,
+  #label > p {
+    font-size: clamp(1rem, 1.5vw, 1.5rem) !important;
+  }
+  #label {
+    left: 18%;
+  }
+  #rowNum {
+    left: 22.5%;
   }
 }
 
@@ -205,8 +223,12 @@ body {
 
 .tile__face--front h2 {
   color: #fff;
-  font-size: clamp(1rem, 2.5vw,3rem);
+  font-size: clamp(1rem, 2.5vw, 3rem);
   margin: 0;
+}
+.Number,
+#label > p {
+  font-size: clamp(1rem, 1.25vw, 2rem) !important;
 }
 
 .tile__face--back {

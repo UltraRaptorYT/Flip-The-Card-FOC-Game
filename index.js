@@ -14,6 +14,7 @@ $(document).ready(() => {
   resize();
   $("#game").addClass("d-none");
   $("#timer").hide();
+  $("#col").hide();
   sessionStorage.clear();
   sessionStorage.setItem("flip", false);
   document.body.style.justifyContent = "center";
@@ -121,6 +122,7 @@ const flip = (index) => {
 const start = () => {
   setInterval(startTimer, 10);
   $("#timer").show();
+  $("#col").show();
   $("#start").addClass("d-none");
   $("#start").removeClass("d-flex");
   $("#game").removeClass("d-none");
@@ -137,17 +139,25 @@ const start = () => {
       array.push(i);
     }
   }
+  document.getElementById("colNum").style.gridTemplateColumns = `repeat(${
+    (config.numberOfFiles * 2) / config.gridSize
+  }, 1fr)`;
+  document.getElementById(
+    "rowNum"
+  ).style.gridTemplateRows = `repeat(${config.gridSize}, 1fr)`;
+  for (var u = 1; u <= (config.numberOfFiles * 2) / config.gridSize; u++) {
+    $("#colNum").append(`<p class="Number">${u}</p>`);
+  }
+  for (var u = 1; u <= config.gridSize; u++) {
+    $("#rowNum").append(`<p class="Number">${u}</p>`);
+  }
   array = shuffleArray(array);
   for (var i = 0; i < config.numberOfFiles * 2; i++) {
     document.getElementById("grid").innerHTML += `
     <div class="tile">
       <div class="tile__inner"  id="card${i}" onClick="flip(${i})">
         <div class="tile__face tile__face--front">
-          <h2>R${
-            Math.floor(i / ((config.numberOfFiles * 2) / config.gridSize)) + 1
-          }C${
-      1 + Math.floor(i % ((config.numberOfFiles * 2) / config.gridSize))
-    }</h2>
+    <h2>?</h2>
         </div>
         <div class="tile__face tile__face--back">
           <img src="./src/cards/${array[i]}.png" />
@@ -156,6 +166,13 @@ const start = () => {
     </div>`;
   }
 };
+
+// <h2>
+//   ${i + 1}R$
+//   {Math.floor(i / ((config.numberOfFiles * 2) / config.gridSize)) + 1}
+//   C$
+//   {1 + Math.floor(i % ((config.numberOfFiles * 2) / config.gridSize))}
+// </h2>;
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
