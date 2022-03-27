@@ -9,6 +9,11 @@ body {
   flex-direction: column;
 }
 
+@font-face {
+  font-family: "Fredoka One";
+  src: url("./src/FredokaOne-Regular.ttf");
+}
+
 *,
 *::before,
 *::after {
