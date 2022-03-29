@@ -3,6 +3,8 @@ const config = {
 	numberOfFiles: 15, // number of different shapes
 };
 
+config.numberOfCards = config.numberOfFiles * 2; // number of cards
+
 const resize = () => {
 	let vh = window.innerHeight * 0.01;
 	console.log(vh);
@@ -63,7 +65,7 @@ const flip = (index) => {
 							count++;
 						}
 						setTimeout(() => {
-							if (count >= config.numberOfFiles * 2) {
+							if (count >= numberOfCards) {
 								startTime = false;
 								alert(`You complete game in ${tries} tries and ${document.getElementById('timer').innerText}`);
 							}
@@ -93,7 +95,7 @@ const start = () => {
 	$('#start').removeClass('d-flex');
 	$('#game').removeClass('d-none');
 	$('#game').addClass('d-flex');
-	document.getElementById('grid').style.gridTemplateColumns = `repeat(${(config.numberOfFiles * 2) / config.gridSize}, 1fr)`;
+	document.getElementById('grid').style.gridTemplateColumns = `repeat(${config.numberOfCards / config.gridSize}, 1fr)`;
 	document.getElementById('grid').style.gridTemplateRows = `repeat(${config.gridSize}, 1fr)`;
 	var array = [];
 	for (var j = 0; j < 2; j++) {
@@ -101,21 +103,23 @@ const start = () => {
 			array.push(i);
 		}
 	}
-	document.getElementById('colNum').style.gridTemplateColumns = `repeat(${(config.numberOfFiles * 2) / config.gridSize}, 1fr)`;
+	cardsArray = [...Array(config.numberOfCards).keys()].map((n) => n + 1); // Populate array of n size from 1 to n
+	document.getElementById('colNum').style.gridTemplateColumns = `repeat(${config.numberOfCards / config.gridSize}, 1fr)`;
 	document.getElementById('rowNum').style.gridTemplateRows = `repeat(${config.gridSize}, 1fr)`;
-	for (var u = 1; u <= (config.numberOfFiles * 2) / config.gridSize; u++) {
+	for (var u = 1; u <= config.numberOfCards / config.gridSize; u++) {
 		$('#colNum').append(`<p class="Number">${u}</p>`);
 	}
 	for (var u = 1; u <= config.gridSize; u++) {
 		$('#rowNum').append(`<p class="Number">${u}</p>`);
 	}
 	array = shuffleArray(array);
-	for (var i = 0; i < config.numberOfFiles * 2; i++) {
+	cardsArray = shuffleArray(cardsArray);
+	for (var i = 0; i < config.numberOfCards; i++) {
 		document.getElementById('grid').innerHTML += `
     <div class="tile">
       <div class="tile__inner"  id="card${i}" onClick="flip(${i})">
         <div class="tile__face tile__face--front">
-          <img src="./src/card-back/${i + 1}.png">
+          <img src="./src/card-back/${cardsArray[i]}.png">
         </div>
         <div class="tile__face tile__face--back">
           <img src="./src/cards/${array[i]}.png" />
@@ -127,9 +131,9 @@ const start = () => {
 
 // <h2>
 //   ${i + 1}R$
-//   {Math.floor(i / ((config.numberOfFiles * 2) / config.gridSize)) + 1}
+//   {Math.floor(i / ((config.numberOfCards) / config.gridSize)) + 1}
 //   C$
-//   {1 + Math.floor(i % ((config.numberOfFiles * 2) / config.gridSize))}
+//   {1 + Math.floor(i % ((config.numberOfCards) / config.gridSize))}
 // </h2>;
 
 function shuffleArray(array) {
